@@ -18,11 +18,13 @@
 package org.apache.nifi.registry.flow;
 
 import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
 
 
 public abstract class VersionedComponent {
 
     private String identifier;
+    private String groupId;
     private String name;
     private String comments;
     private Position position;
@@ -34,6 +36,15 @@ public abstract class VersionedComponent {
 
     public void setIdentifier(String identifier) {
         this.identifier = identifier;
+    }
+
+    @ApiModelProperty("The ID of the Process Group that this component belongs to")
+    public String getGroupIdentifier() {
+        return groupId;
+    }
+
+    public void setGroupIdentifier(String groupId) {
+        this.groupId = groupId;
     }
 
     @ApiModelProperty("The component's name")
@@ -67,5 +78,25 @@ public abstract class VersionedComponent {
 
     public void setComponentType(ComponentType type) {
         // purposely do nothing here, this just to allow unmarshalling
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identifier);
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof VersionedComponent)) {
+            return false;
+        }
+        final VersionedComponent other = (VersionedComponent) obj;
+        return Objects.equals(identifier, other.identifier);
     }
 }

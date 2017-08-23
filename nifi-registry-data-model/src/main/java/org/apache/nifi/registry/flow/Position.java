@@ -19,6 +19,8 @@ package org.apache.nifi.registry.flow;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.Objects;
+
 
 @ApiModel("The position of a component on the graph")
 public class Position {
@@ -54,5 +56,26 @@ public class Position {
     @Override
     public String toString() {
         return "[x=" + x + ", y=" + y + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 + 41 * Objects.hash(x, y);
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Position)) {
+            return false;
+        }
+
+        final Position other = (Position) obj;
+        return x == other.x && y == other.y;
     }
 }

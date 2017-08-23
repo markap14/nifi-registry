@@ -190,5 +190,10 @@
             <artifactId>bcpkix-jdk15on</artifactId>
             <version>1.55</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.nifi.registry</groupId>
+            <artifactId>nifi-registry-data-model</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

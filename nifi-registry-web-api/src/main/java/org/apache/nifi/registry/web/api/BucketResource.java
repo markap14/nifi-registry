@@ -34,6 +34,7 @@ import org.apache.nifi.registry.service.params.QueryParameters;
 import org.apache.nifi.registry.service.params.SortParameter;
 import org.apache.nifi.registry.web.link.LinkService;
 import org.apache.nifi.registry.web.response.FieldsEntity;
+import org.apache.nifi.registry.bucket.Bucket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
